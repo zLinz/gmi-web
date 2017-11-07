@@ -1,0 +1,6 @@
+1、npm install
+2、npm link
+3、gmi-web -h
+
+4、./bin 命令行初始化文件夹
+5、./lib 工具包文件夹
