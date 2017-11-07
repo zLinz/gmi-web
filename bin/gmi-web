@@ -1,0 +1,57 @@
+#! /usr/bin/env node
+/**
+ * Description: Error Handle Util
+ * Author: Liam
+ * CreatedAt: 2017-1107-1048
+ * UpdateBy:
+ * UpdateAt:
+ */ 
+
+/*  Test gmiweb exports interface
+    var gmiweb = require ('../lib/gmi-web')
+    gmiweb.gmiweb ()
+	console.log ("This is a test of gmi-web npm command!")
+
+	GMIERR = require ('../lib/util/gmi-err').GMIEvent
+	GMIERR.GMIError ()
+*/
+
+// require modules from orther package
+var COMMANDER = require ('commander'),
+	PACKAGEJSON = require ('../package.json'),
+	GMILOG = require ('../lib/util/gmi-log')
+
+// COMMAND options usage
+COMMANDER
+	// auto generate option information: gmi-web -h
+	.usage ('[options] <filename ...>')
+	// option v : gmi-web -v
+	.option ('-v, --version', 'show description', () => {
+		if (PACKAGEJSON.version) {
+            GMILOG.N_LOG (PACKAGEJSON.name + ' : ' + PACKAGEJSON.version)
+        } else {
+            GMILOG.E_LOG ('There is no version info.')
+		}
+	})
+	// template
+	.option ('-t, --test <argument>', 'test option usages', (argument) => {
+		GMILOG.N_LOG (argument);
+	})
+
+// COMMAND command usage
+COMMANDER
+	// command template
+	.command ('start <projectname>')
+	// command description
+	.description ('create a new project.')
+	.action ( (projectname) => {
+		GMILOG.N_LOG (projectname)
+	})
+
+
+
+// parse the argv by COMMANDER
+COMMANDER.parse (process.argv)
+
+// while there is no argument, output the help options
+if (!process.argv [2]) COMMANDER.help ();

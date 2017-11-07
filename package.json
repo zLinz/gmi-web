@@ -1,0 +1,27 @@
+{
+	"name": "gmi-web",
+	"version": "0.0.1",
+	"description": "Auto Build Website Program",
+	"main": "./lib/gmi-web",
+	"bin": {
+		"gmi-web": "./bin/gmi-web"
+	},
+	"scripts": {
+		"test": "echo \"no error\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "<%USER>@ykt.linzhizhao.com:/home/gemini/gmi-web.git"
+	},
+	"keywords": [
+		"gmi-web",
+		"Auto",
+		"Build",
+		"tool"
+	],
+	"author": "linzhizhao790086754@icloud.com",
+	"license": "ISC",
+	"dependencies": {
+		"commander": "^2.11.0"
+	}
+}

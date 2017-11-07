@@ -1,0 +1,2 @@
+1->main: ./lib/gmi-web.js used to exports
+2->bin: ./bin/gmi-web used to command
