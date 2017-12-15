@@ -19,7 +19,9 @@
 // require modules from orther package
 var COMMANDER = require ('commander'),
 	PACKAGEJSON = require ('../package.json'),
-	GMILOG = require ('../lib/util/gmi-log')
+	GMILOG = require ('../lib/util/gmi-log'),
+    webpack = require('webpack'),
+	webpackConfig = require('../lib/util/webpack.config.js')
 
 // COMMAND options usage
 COMMANDER
@@ -46,6 +48,21 @@ COMMANDER
 	.description ('create a new project.')
 	.action ( (projectname) => {
 		GMILOG.N_LOG (projectname)
+		//创建一个webpack配置对象
+		var myDevConfig = Object.create (webpackConfig);
+
+		//使用webpack模块初始化配置对象
+		var devCompiler = webpack (myDevConfig);
+			devCompiler.watch ({ // watch options:
+			aggregateTimeout: 300, // wait so long for more changes
+			poll: false // use polling instead of native watchers
+			// pass a number to set the polling interval
+		}, function (err, stats) {
+			if (err) console.log (err);
+			console.log (stats.toString ({
+				profile: true, colors: true
+			}));
+		});
 	})
 
 
