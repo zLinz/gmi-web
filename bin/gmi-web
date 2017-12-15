@@ -35,7 +35,7 @@ COMMANDER
 	})
 	// template
 	.option ('-t, --test <argument>', 'test option usages', (argument) => {
-		GMILOG.N_LOG (argument);
+		GMILOG.N_LOG (argument)
 	})
 
 // COMMAND command usage
@@ -54,4 +54,4 @@ COMMANDER
 COMMANDER.parse (process.argv)
 
 // while there is no argument, output the help options
-if (!process.argv [2]) COMMANDER.help ();
+if (!process.argv [2]) COMMANDER.help ()
