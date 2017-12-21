@@ -1,0 +1,48 @@
+.main-site {
+    background-color: #f2f2f2;
+    p.article {
+        margin-top: 11px;
+        color: #666;
+    }
+    .module-header {
+        text-align: center;
+        .module-title {
+            text-align: center;
+            span {
+                font-size: 7px;
+                color: #444;
+            }
+            p.article {
+                padding: 0 20%;
+            }
+        }
+    }
+    .module-00 {
+        nav {
+            a.navbar-brand {
+                padding-right: 10px;
+                margin-left: 20px;
+            }
+        }        
+    }
+    .module-01 {
+        margin: 25px 0;
+        padding: 10px 0;
+    }
+    .module-02 {
+        margin: 26px 0;
+        padding: 10px 0;
+        background-color: #f8f8f8;
+    }
+    .module-03 {
+        margin: 25px 0;
+        padding: 10px 0;
+        background-color: #fff;
+        .module-title {
+            border-bottom: 1px solid #ddd;
+        }
+    }
+    .module-slide {
+        height: 400px;
+    }
+}

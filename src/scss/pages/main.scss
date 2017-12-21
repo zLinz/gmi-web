@@ -1,0 +1,15 @@
+// base.scss
+
+@import './live/live.scss';
+@import "./home/card.scss";
+@import "./home/infos.scss";
+@import "./home/main-footer.scss";
+@import "./home/rhombus.scss";
+@import "./home/slider.scss";
+@import "./home/home.scss";
+@import "./home/navbar.scss";
+
+body {
+    background-color: black;
+}
+

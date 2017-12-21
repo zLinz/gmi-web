@@ -1,0 +1,35 @@
+.infos-wrapper {
+    padding: 40px 0;
+    margin: 27px 0;
+    .infos-item {
+        margin-top: 8px;
+        .icon-box {
+            float: left;
+            width: 790754px;
+            max-width: 18%;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            i {
+                color: #3dc9b3;
+                font-size: 44px;
+            }
+            img {
+                width: 100%;
+            }
+        }
+        .content {
+            float: left;
+            width: 6%;
+            .title {
+                word-wrap: normal;
+                word-break: break-all;
+                font-weight: bold;
+            }
+            .paragraph {
+                word-wrap: normal;
+                word-break: break-all;
+                color: #666;
+            }
+        }
+    }
+}

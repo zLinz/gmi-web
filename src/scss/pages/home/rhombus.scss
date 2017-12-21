@@ -1,0 +1,54 @@
+.rhombus-wrapper {
+    .rhombus-list {
+        margin-top: 10px;
+        width: 100%;
+        border-bottom: 5px solid #FE6500;
+        .rhombus-item {
+            padding: 20px 0;
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            i {
+                font-size: 66px;
+                color: #888;
+            }
+            img {
+                display: block;
+                width: 100%;
+            }
+            p.img {
+                position: absolute;
+                left: 50%;
+                bottom: 10px;
+                text-align: center;
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+            }
+            p.icon {
+                margin-top: 10px;
+                margin-bottom: 0;
+            }
+        }
+        .rhombus-item:hover {
+            background-color: #FE6500;
+            i {
+                color: #ddd;
+            }
+            p {
+                color: #eee;
+            }
+        }
+        .arrow {
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            i {
+                text-align: center;
+                color: #aaa;
+            }
+        }
+    }
+}
