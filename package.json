@@ -22,7 +22,8 @@
 	"author": "linzhizhao790086754@icloud.com",
 	"license": "ISC",
 	"dependencies": {
-		"commander": "^2.11.0"
+		"commander": "^2.11.0",
+		"jquery": "^3.2.1"
 	},
 	"devDependencies": {
 		"async": "^2.6.0",
