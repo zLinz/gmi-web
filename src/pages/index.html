@@ -1,8 +1,402 @@
 <!DOCTYPE html>
 <html>
-<% @@include="/includes/header.html" %>
-<body>
-    <img src="@PATH@assets/img/head.png?version=@VERSION@"/>
-    <% @@include="/includes/footer.html" %>
-</body>
+<% @@include="/includes/head-tag.html" %>
+
+    <body>
+        <!-- <img src="@PATH@assets/img/head.png?version=@VERSION@"/> -->
+
+        <!-- 页面header -->
+        <header class="navbar-wrapper">
+            <div class="navbar navbar-fixed-top">
+                <div class="container-fluid cl">
+                    <!-- 浏览器宽度大于 767px 时显示logo -->
+                    <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a>
+                    <!-- 浏览器宽度小于 767px 时显示的logo -->
+                    <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
+                    <!-- 系统版本号，浏览器宽度大于 767px 时显示 -->
+                    <span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.1</span>
+                    <!-- 浏览器宽度小于 767px 时显示的按钮，用于显示和隐藏菜单列表 -->
+                    <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;"></a>
+
+                    <!-- 顶部导航栏的选项列表，浏览器宽度小于 767px 时隐藏 -->
+                    <nav class="nav navbar-nav">
+                        <ul class="cl">
+                            <li class="dropDown dropDown_hover">
+                                <a href="javascript:;" class="dropDown_A">
+                                    <i class="Hui-iconfont"></i> 新增
+                                    <i class="Hui-iconfont"></i>
+                                </a>
+                                <ul class="dropDown-menu menu radius box-shadow">
+                                    <li>
+                                        <a href="javascript:;" onclick="article_add('添加资讯','article-add.html')">
+                                            <i class="Hui-iconfont"></i> 资讯</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" onclick="picture_add('添加资讯','picture-add.html')">
+                                            <i class="Hui-iconfont"></i> 图片</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" onclick="product_add('添加资讯','product-add.html')">
+                                            <i class="Hui-iconfont"></i> 产品</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')">
+                                            <i class="Hui-iconfont"></i> 用户</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropDown dropDown_hover">
+                                <a href="javascript:;" class="dropDown_A">工具
+                                    <i class="Hui-iconfont"></i>
+                                </a>
+                                <ul class="dropDown-menu menu radius box-shadow">
+                                    <li>
+                                        <a href="http://www.h-ui.net/bug.shtml" target="_blank">Bug兼容性汇总</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://www.h-ui.net/websafecolors.shtml" target="_blank">web安全色</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://www.h-ui.net/Hui-3.7-Hui-iconfont.shtml" target="_blank">Hui-iconfont</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">web工具箱
+                                            <i class="arrow Hui-iconfont"></i>
+                                        </a>
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="http://www.h-ui.net/tools/jsformat.shtml" target="_blank">JS/HTML格式化工具</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://www.h-ui.net/tools/HTMLtoJS.shtml" target="_blank">HTML/JS转换工具</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://www.h-ui.net/tools/cssformat.shtml" target="_blank">CSS代码格式化工具</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://www.h-ui.net/tools/daxiaoxie.shtml" target="_blank">字母大小写转换工具</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://www.h-ui.net/tools/fantizhuanhuan.shtml" target="_blank">繁体字、火星文转换</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">三级菜单
+                                                    <i class="arrow Hui-iconfont"></i>
+                                                </a>
+                                                <ul class="menu">
+                                                    <li>
+                                                        <a href="javascript:;">四级菜单</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;">四级菜单</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;">四级菜单</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">三级导航</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">二级导航</a>
+                                    </li>
+                                    <li class="disabled">
+                                        <a href="javascript:;">二级菜单</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <!-- 顶部导航栏固定显示在右侧的列表，浏览器宽度小于 767px 时隐藏 -->
+                    <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+                        <ul class="cl">
+                            <li>超级管理员</li>
+                            <li class="dropDown dropDown_hover">
+                                <a href="#" class="dropDown_A">admin
+                                    <i class="Hui-iconfont"></i>
+                                </a>
+                                <ul class="dropDown-menu menu radius box-shadow">
+                                    <li>
+                                        <a href="javascript:;" onclick="myselfinfo()">个人信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">切换账户</a>
+                                    </li>
+                                    <li>
+                                        <a href="@path@login/login.html">退出</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="Hui-msg">
+                                <a href="#" title="消息">
+                                    <span class="badge badge-danger">1</span>
+                                    <i class="Hui-iconfont" style="font-size:18px"></i>
+                                </a>
+                            </li>
+                            <li id="Hui-skin" class="dropDown right dropDown_hover">
+                                <a href="javascript:;" class="dropDown_A" title="换肤">
+                                    <i class="Hui-iconfont" style="font-size:18px"></i>
+                                </a>
+                                <ul class="dropDown-menu menu radius box-shadow">
+                                    <li>
+                                        <a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" data-val="blue" title="蓝色">蓝色</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" data-val="green" title="绿色">绿色</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" data-val="red" title="红色">红色</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" data-val="yellow" title="黄色">黄色</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" data-val="orange" title="橙色">橙色</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- 侧边栏菜单 -->
+        <aside class="Hui-aside">
+            <div class="menu_dropdown bk_2">
+                <!-- 定义了一个菜单列表 -->
+                <dl id="">
+                    <!-- 列表的说明 -->
+                    <dt>
+                        <i class="Hui-iconfont"></i> 首页管理
+                        <i class="Hui-iconfont menu_dropdown-arrow"></i>
+                    </dt>
+                    <!-- 具体的列表内容 -->
+                    <dd>
+                        <ul>
+                            <li>
+                                <!-- data-href 属性是点击此菜单，使用iframe打开的html页面的地址 -->
+                                <a data-href="@PATH@pages/home/test1.html" data-title="首页产品第一行" href="javascript:void(0)">首页产品第一行</a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- 侧边栏菜单隐藏按钮 -->
+        <div class="dislpayArrow hidden-xs">
+            <a class="pngfix" href="javascript:void(0);" onclick="displaynavbar(this)"></a>
+        </div>
+
+        <!-- 页面主要内容 -->
+        <section class="Hui-article-box">
+            <!-- tabs 模块 -->
+            <div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
+                <div class="Hui-tabNav-wp">
+                    <!-- tabs 列表 -->
+                    <ul id="min_title_list" class="acrossTab cl" style="width: 133px; left: 0px;">
+                        <!-- 每个tab 项 -->
+                        <li class="active">
+                            <span title="我的桌面" data-href="@path@index.html">我的桌面</span>
+                            <em></em>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 如果tab项过多，会出现翻页按钮 -->
+                <div class="Hui-tabNav-more btn-group" style="display: none;">
+                    <a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;">
+                        <i class="Hui-iconfont"></i>
+                    </a>
+                    <a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;">
+                        <i class="Hui-iconfont"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- iframe 模块 -->
+            <div id="iframe_box" class="Hui-article">
+                <!-- 每个iframe内容，这里设置的是固定显示在页面上 -->
+                <div class="show_iframe">
+                    <div style="display:none" class="loading"></div>
+                    <!-- <iframe scrolling="yes" frameborder="0" src="@path@index.html"></iframe> -->
+                    <div class="page-container">
+                        <p class="f-20 text-success">欢迎使用H-ui.admin
+                            <span class="f-14">v3.1</span>后台模版！</p>
+                        <p>登录次数：18 </p>
+                        <p>上次登录IP：222.35.131.79.1 上次登录时间：2014-6-14 11:19:55</p>
+                        <table class="table table-border table-bordered table-bg">
+                            <thead>
+                                <tr>
+                                    <th colspan="7" scope="col">信息统计</th>
+                                </tr>
+                                <tr class="text-c">
+                                    <th>统计</th>
+                                    <th>资讯库</th>
+                                    <th>图片库</th>
+                                    <th>产品库</th>
+                                    <th>用户</th>
+                                    <th>管理员</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-c">
+                                    <td>总数</td>
+                                    <td>92</td>
+                                    <td>9</td>
+                                    <td>0</td>
+                                    <td>8</td>
+                                    <td>20</td>
+                                </tr>
+                                <tr class="text-c">
+                                    <td>今日</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr class="text-c">
+                                    <td>昨日</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr class="text-c">
+                                    <td>本周</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr class="text-c">
+                                    <td>本月</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-border table-bordered table-bg mt-20">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" scope="col">服务器信息</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th width="30%">服务器计算机名</th>
+                                    <td>
+                                        <span id="lbServerName">http://127.0.0.1/</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>服务器IP地址</td>
+                                    <td>192.168.1.1</td>
+                                </tr>
+                                <tr>
+                                    <td>服务器域名</td>
+                                    <td>www.h-ui.net</td>
+                                </tr>
+                                <tr>
+                                    <td>服务器端口 </td>
+                                    <td>80</td>
+                                </tr>
+                                <tr>
+                                    <td>服务器IIS版本 </td>
+                                    <td>Microsoft-IIS/6.0</td>
+                                </tr>
+                                <tr>
+                                    <td>本文件所在文件夹 </td>
+                                    <td>D:\WebSite\HanXiPuTai.com\XinYiCMS.Web\</td>
+                                </tr>
+                                <tr>
+                                    <td>服务器操作系统 </td>
+                                    <td>Microsoft Windows NT 5.2.3790 Service Pack 2</td>
+                                </tr>
+                                <tr>
+                                    <td>系统所在文件夹 </td>
+                                    <td>C:\WINDOWS\system32</td>
+                                </tr>
+                                <tr>
+                                    <td>服务器脚本超时时间 </td>
+                                    <td>30000秒</td>
+                                </tr>
+                                <tr>
+                                    <td>服务器的语言种类 </td>
+                                    <td>Chinese (People's Republic of China)</td>
+                                </tr>
+                                <tr>
+                                    <td>.NET Framework 版本 </td>
+                                    <td>2.050727.3655</td>
+                                </tr>
+                                <tr>
+                                    <td>服务器当前时间 </td>
+                                    <td>2014-6-14 12:06:23</td>
+                                </tr>
+                                <tr>
+                                    <td>服务器IE版本 </td>
+                                    <td>6.0000</td>
+                                </tr>
+                                <tr>
+                                    <td>服务器上次启动到现在已运行 </td>
+                                    <td>7210分钟</td>
+                                </tr>
+                                <tr>
+                                    <td>逻辑驱动器 </td>
+                                    <td>C:\D:\</td>
+                                </tr>
+                                <tr>
+                                    <td>CPU 总数 </td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>CPU 类型 </td>
+                                    <td>x86 Family 6 Model 42 Stepping 1, GenuineIntel</td>
+                                </tr>
+                                <tr>
+                                    <td>虚拟内存 </td>
+                                    <td>52480M</td>
+                                </tr>
+                                <tr>
+                                    <td>当前程序占用内存 </td>
+                                    <td>3.29M</td>
+                                </tr>
+                                <tr>
+                                    <td>Asp.net所占内存 </td>
+                                    <td>51.46M</td>
+                                </tr>
+                                <tr>
+                                    <td>当前Session数量 </td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>当前SessionID </td>
+                                    <td>gznhpwmp34004345jz2q3l45</td>
+                                </tr>
+                                <tr>
+                                    <td>当前系统用户名 </td>
+                                    <td>NETWORK SERVICE</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <% @@include="/includes/script-tag.html" %>
+    </body>
+
 </html>

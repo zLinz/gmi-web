@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <% @@include="/includes/head-tag.html" %>
+
+    <body class="hold-transition skin-blue sidebar-mini">
+        <!-- 页面的路径 -->
+        <nav class="breadcrumb">
+            <i class="Hui-iconfont"></i> 首页
+            <span class="c-gray en">&gt;</span> 首页管理
+            <span class="c-gray en">&gt;</span> 首页展示第一行
+            <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);"
+                title="刷新">
+                <i class="Hui-iconfont"></i>
+            </a>
+        </nav>
+        <div class="page-container">
+            <section class="content">
+                <div class="box-header">
+                    <div class="col-sm-12">
+                        <button type="button" class="add-info btn btn-info btn-sm">添加</button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table id="example2" class="display table dataTable table-bordered table-hover" width="100%">
+                    </table>
+                </div>
+
+            </section>
+        </div>
+        <% @@include="/includes/script-tag.html" %>
+    </body>
+
+</html>
