@@ -23,9 +23,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"commander": "^2.11.0",
-		"jquery": "^3.2.1"
-	},
-	"devDependencies": {
+		"jquery": "^3.2.1",
 		"async": "^2.6.0",
 		"babel-core": "^6.26.0",
 		"babel-loader": "^7.1.2",
@@ -38,5 +36,8 @@
 		"node-sass": "^4.7.2",
 		"opener": "^1.4.3",
 		"webpack": "^3.10.0"
+	},
+	"devDependencies": {
+
 	}
 }
