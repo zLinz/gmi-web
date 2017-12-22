@@ -1,0 +1,42 @@
+{
+	"name": "gmi-web",
+	"version": "0.0.1",
+	"description": "Auto Build Website Program",
+	"main": "./lib/gmi-web",
+	"bin": {
+		"gmi-web": "./bin/gmi-web"
+	},
+	"scripts": {
+		"test": "echo \"no error\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "<%USER>@ykt.linzhizhao.com:/home/gemini/gmi-web.git"
+	},
+	"keywords": [
+		"gmi-web",
+		"Auto",
+		"Build",
+		"tool"
+	],
+	"author": "linzhizhao790086754@icloud.com",
+	"license": "ISC",
+	"dependencies": {
+		"commander": "^2.11.0",
+		"jquery": "^3.2.1"
+	},
+	"devDependencies": {
+		"async": "^2.6.0",
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-preset-es2015": "^6.24.1",
+		"chokidar": "^1.7.0",
+		"express": "^4.16.2",
+		"fs-extra": "^5.0.0",
+		"glob": "^7.1.2",
+		"html-minifier": "^3.5.7",
+		"node-sass": "^4.7.2",
+		"opener": "^1.4.3",
+		"webpack": "^3.10.0"
+	}
+}

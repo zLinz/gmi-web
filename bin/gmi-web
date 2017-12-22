@@ -20,6 +20,8 @@
 var COMMANDER = require ('commander'),
 	PACKAGEJSON = require ('../package.json'),
 	GMILOG = require ('../lib/util/gmi-log'),
+    fsExtra = require ('fs-extra'),
+    path = require ('path'),
 	RUNSERVER = require ('../lib/bin/serve')
     // webpack = require('webpack'),
 	// webpackConfig = require('../lib/util/webpack.config.js')
@@ -48,7 +50,17 @@ COMMANDER
 	// command description
 	.description ('create a new project.')
 	.action ( (projectname) => {
-		GMILOG.N_LOG (projectname)
+		var DestPath = path.resolve (process.cwd (), projectname)
+		var TempPath = path.resolve (__dirname, '../template')
+		// GMILOG.N_LOG (DestPath)
+		// GMILOG.N_LOG (TempPath)
+		fsExtra.copy (TempPath, DestPath, (err) => {
+			if (err) {
+				console.log (err)
+			} else {
+				console.log ("Generate " + projectname +" done!")
+			}
+		})
 	})
 
 // COMMAND command serve
@@ -61,6 +73,17 @@ COMMANDER
 		RUNSERVER.run ()	
 	})
 
+// COMMAND command clean
+COMMANDER
+	// command template
+	.command ('build')
+	// command description
+	.description ('clean dist directory and build')
+	.action ( () => {
+		fsExtra.remove (path.resolve (process.cwd (), 'dist'), (err) => {
+			RUNSERVER.run ()	
+		})	
+	})
 
 // parse the argv by COMMANDER
 COMMANDER.parse (process.argv)
