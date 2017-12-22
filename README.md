@@ -9,3 +9,6 @@
 
 ## build
     ``` gmi-web build
+
+## contact
+    ``` linzhizhao790086754@gmail.com
