@@ -4,6 +4,9 @@
 ## start <project_name>
     ``` gmi-web start <project_name> && cd <project_name>
 
+## install babel-loader package
+    ``` npm install
+
 ## run
     ``` gmi-web serve
 
