@@ -20,11 +20,11 @@
     ``` linzhizhao790086754@gmail.com
 
 ## brief document
-    1. src/assets -> dist/assets (watch support)
-    2. src/js -> dist/js (webpack build)
-    3. src/lib -> dist/lib (watch support)
-    4. src/pages -> dist (watch support && root directory)
-    5. src/scss/pages/main.scss -> dist/css/style.min.css (so all of your scss file needed to be import to main.scss file)
+    1. src/assets -> dist/assets (watch supported)
+    2. src/js -> dist/js (webpack build && watch supported)
+    3. src/lib -> dist/lib (watch supported)
+    4. src/pages -> dist (watch supported && root directory)
+    5. src/scss/pages/main.scss -> dist/css/style.min.css (watch supported && so all of your scss file needed to be imported into main.scss file)
     6. put all the dist file into your server, and open your browser.
 
 ## notice
