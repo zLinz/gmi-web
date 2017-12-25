@@ -28,4 +28,4 @@
     6. put all the dist file into your server, and open your browser.
 
 ## notice
-    1. src/js/tool、src/js/pages、src/scss/pages/main.scss and src/pages/includes can't delete.
+    1. src/js/tool、src/js/pages、src/scss/pages/main.scss and src/pages/includes can't be deleted.
