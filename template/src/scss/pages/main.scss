@@ -1,4 +1,16 @@
-body {
-    background-color: black;
+@import "common/common";
+@import "index/index";
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 100%;
 }
+
+// vue框架样式，加上这句并且在vue模板上添加v-cloak
+[v-cloak] {
+	display: none;
+}
+
 
