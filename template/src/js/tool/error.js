@@ -1,7 +1,7 @@
 /**
  * @description 项目配置
  */
-var _PROJECT_CONFIG = require('../../../projectVersion.json');
+var _PROJECT_CONFIG = require('../../../projectVersion.js');
 
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     var string = msg.toLowerCase();

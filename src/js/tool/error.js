@@ -1,7 +1,7 @@
 /**
- * @description 项目配置
+ * @description 全局错误捕获
  */
-var _PROJECT_CONFIG = require('../../../projectVersion.json');
+var _PROJECT_CONFIG = require('../../../projectVersion.js');
 
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     var string = msg.toLowerCase();
@@ -16,7 +16,7 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
             'Line': lineNo,     // 错代码行数
             'Agent': window.navigator.userAgent     // 客户端的信息
         };
-        alert(message);
+        console.log (message);
 
     }
 

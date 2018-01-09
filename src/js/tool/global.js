@@ -1,5 +1,5 @@
 
-var projectConfig = require ("../../../projectVersion.json");
+var projectConfig = require ("../../../projectVersion.js");
 
 var Global = module.exports = {}
 

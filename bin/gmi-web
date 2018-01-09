@@ -22,7 +22,8 @@ var COMMANDER = require ('commander'),
 	GMILOG = require ('../lib/util/gmi-log'),
     fsExtra = require ('fs-extra'),
     path = require ('path'),
-	RUNSERVER = require ('../lib/bin/serve')
+	RUNSERVER = require ('../lib/bin/serve'),
+	DOWNLOAD = require ('../lib/util/gmi-download')
     // webpack = require('webpack'),
 	// webpackConfig = require('../lib/util/webpack.config.js')
 
@@ -49,18 +50,27 @@ COMMANDER
 	.command ('start <projectname>')
 	// command description
 	.description ('create a new project.')
-	.action ( (projectname) => {
+	.option ('-m, --mode [mode]', 'which src mode to use,such as normal => normal website, admin => admin website.')
+	.action ( (projectname, options) => {
 		var DestPath = path.resolve (process.cwd (), projectname)
 		var TempPath = path.resolve (__dirname, '../template')
 		// GMILOG.N_LOG (DestPath)
 		// GMILOG.N_LOG (TempPath)
-		fsExtra.copy (TempPath, DestPath, (err) => {
-			if (err) {
-				console.log (err)
-			} else {
-				console.log ("Generate " + projectname +" done!")
-			}
+		// GMILOG.N_LOG (options)
+		var mode = options.mode || 'normal'
+
+		fsExtra.ensureDir (DestPath, err => {
+			if (err) console.log (err)
+			DOWNLOAD.request (projectname, DestPath, mode)
 		})
+
+		// fsExtra.copy (TempPath, DestPath, (err) => {
+		// 	if (err) {
+		// 		console.log (err)
+		// 	} else {
+		// 		console.log ("Generate " + projectname +" done!")
+		// 	}
+		// })
 	})
 
 // COMMAND command serve
