@@ -1,6 +1,6 @@
 {
 	"name": "gmi-web",
-	"version": "0.1.10",
+	"version": "0.1.11",
 	"description": "Auto Build Website Program",
 	"main": "./lib/gmi-web",
 	"bin": {
