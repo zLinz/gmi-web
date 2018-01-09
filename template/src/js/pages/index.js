@@ -4,7 +4,7 @@
  */
 var Global = require('tool/global');
 var Host = require('tool/host');
-
+require('tool/error');
 $(function () {
     var app = new Vue({
         el: '.index-page',
