@@ -1,7 +1,7 @@
 /**
  * @description 全局错误捕获
  */
-var _PROJECT_CONFIG = require('../../../projectVersion.js');
+var _PROJECT_CONFIG = require('../../../projectConfig.js');
 
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     var string = msg.toLowerCase();
