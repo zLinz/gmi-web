@@ -1,8 +1,24 @@
 <!DOCTYPE html>
 <html>
 <% @@include="/includes/header.html" %>
-<body>
-    <img src="@PATH@assets/img/head.png?version=@VERSION@"/>
-    <% @@include="/includes/footer.html" %>
-</body>
+
+    <body class="index-body">
+        <div class="index-navigator">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="item in banners">
+                        index navigator swiper1
+                    </div>
+                    <div class="swiper-slide" v-for="item in banners">
+                        index navigator swiper2
+                    </div>
+                </div>
+                <!-- 分页pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <% @@include="/includes/footer.html" %>
+        <script src="@PATH@js/index.js?version=@VERSION@"></script>
+    </body>
+
 </html>
