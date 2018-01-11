@@ -1,8 +1,9 @@
 ## install
     ``` npm install -g gmi-web
 
-## start <project_name> -m normal|admin (download cloud template)
-    ``` gmi-web start <project_name> -m normal|admin && cd <project_name>
+## start <project_name>
+    ``` gmi-web start <project_name> && cd <project_name>
+        if you don't know the password, just pass throught.
 
 ## install babel-loader package
     ``` npm install
