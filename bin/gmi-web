@@ -1,11 +1,12 @@
 #! /usr/bin/env node
+
 /**
  * Description: Error Handle Util
  * Author: Liam
  * CreatedAt: 2017-1107-1048
  * UpdateBy:
  * UpdateAt:
- */ 
+ */
 
 /*  Test gmiweb exports interface
     var gmiweb = require ('../lib/gmi-web')
@@ -17,86 +18,134 @@
 */
 
 // require modules from orther package
-var COMMANDER = require ('commander'),
-	PACKAGEJSON = require ('../package.json'),
-	GMILOG = require ('../lib/util/gmi-log'),
-    fsExtra = require ('fs-extra'),
-    path = require ('path'),
-	RUNSERVER = require ('../lib/bin/serve'),
-	DOWNLOAD = require ('../lib/util/gmi-download')
-    // webpack = require('webpack'),
-	// webpackConfig = require('../lib/util/webpack.config.js')
+var COMMANDER = require('commander'),
+	PACKAGEJSON = require('../package.json'),
+	GMILOG = require('../lib/util/gmi-log'),
+	fsExtra = require('fs-extra'),
+	path = require('path'),
+	RUNSERVER = require('../lib/bin/serve'),
+	DOWNLOAD = require('../lib/util/gmi-download'),
+	prompt = require('prompt')
+// webpack = require('webpack'),
+// webpackConfig = require('../lib/util/webpack.config.js')
+
+var schema = {
+	properties: {
+		// name: {
+		// 	pattern: /^[a-zA-Z\s\-]+$/,
+		// 	message: 'Name must be only letters, spaces, or dashes',
+		// 	required: true
+		// },
+		password: {
+			hidden: true,
+			replace: '*'
+			// required: true
+		}
+	}
+};
+
 
 // COMMAND options usage
 COMMANDER
 	// auto generate option information: gmi-web -h
-	.usage ('[options] <filename ...>')
+	.usage('[options] <filename ...>')
 	// option v : gmi-web -v
-	.option ('-v, --version', 'show description', () => {
+	.option('-v, --version', 'show description', () => {
 		if (PACKAGEJSON.version) {
-            GMILOG.N_LOG (PACKAGEJSON.name + ' : ' + PACKAGEJSON.version)
-        } else {
-            GMILOG.E_LOG ('There is no version info.')
+			GMILOG.N_LOG(PACKAGEJSON.name + ' : ' + PACKAGEJSON.version)
+		} else {
+			GMILOG.E_LOG('There is no version info.')
 		}
 	})
 	// template
-	.option ('-t, --test <argument>', 'test option usages', (argument) => {
-		GMILOG.N_LOG (argument)
+	.option('-t, --test <argument>', 'test option usages', (argument) => {
+		GMILOG.N_LOG(argument)
 	})
 
 // COMMAND command start
 COMMANDER
 	// command template
-	.command ('start <projectname>')
+	.command('start <projectname>')
 	// command description
-	.description ('create a new project.')
-	.option ('-m, --mode [mode]', 'which src mode to use,such as normal => normal website, admin => admin website.')
-	.action ( (projectname, options) => {
-		var DestPath = path.resolve (process.cwd (), projectname)
-		var TempPath = path.resolve (__dirname, '../template')
+	.description('create a new project.')
+	.option('-m, --mode [mode]', 'which src mode to use')
+	.action((projectname, options) => {
+		var DestPath = path.resolve(process.cwd(), projectname)
+		var TempPath = path.resolve(__dirname, '../template')
 		// GMILOG.N_LOG (DestPath)
 		// GMILOG.N_LOG (TempPath)
 		// GMILOG.N_LOG (options)
-		var mode = options.mode || 'normal'
+		var mode = options.mode
 
-		fsExtra.ensureDir (DestPath, err => {
-			if (err) console.log (err)
-			DOWNLOAD.request (projectname, DestPath, mode)
-		})
+		// Start the prompt 
+		// 
+		prompt.start();
 
-		// fsExtra.copy (TempPath, DestPath, (err) => {
-		// 	if (err) {
-		// 		console.log (err)
-		// 	} else {
-		// 		console.log ("Generate " + projectname +" done!")
-		// 	}
-		// })
+		// 
+		// Get two properties from the user: email, password 
+		// 
+		prompt.get(schema, function (err, result) {
+			// 
+			// Log the results. 
+			// 
+			// console.log('');
+			if (err) console.log(err)
+			if (result.password == 'gmitemplate') {
+				if (mode == 'normal' || mode == 'admin') {
+					fsExtra.ensureDir(DestPath, err => {
+						if (err) console.log(err)
+						DOWNLOAD.request(projectname, DestPath, mode)
+					})
+				} else {
+					fsExtra.copy(TempPath, DestPath, (err) => {
+						if (err) {
+							console.log(err)
+						} else {
+							console.log("Generate " + projectname + " done!")
+						}
+					})
+				}
+				prompt.stop();
+			} else {
+				fsExtra.copy(TempPath, DestPath, (err) => {
+					if (err) {
+						console.log(err)
+					} else {
+						console.log("Generate " + projectname + " done!")
+					}
+				})
+			}
+			prompt.stop();
+			// console.log('  password: ' + result.password);
+		});
+
+
 	})
 
 // COMMAND command serve
 COMMANDER
 	// command template
-	.command ('serve')
+	.command('serve')
 	// command description
-	.description ('serve a project.')
-	.action ( () => {
-		RUNSERVER.run ()	
+	.description('serve a project.')
+	.action(() => {
+		RUNSERVER.run()
 	})
 
 // COMMAND command clean
 COMMANDER
 	// command template
-	.command ('build')
+	.command('build')
 	// command description
-	.description ('clean dist directory and build')
-	.action ( () => {
-		fsExtra.remove (path.resolve (process.cwd (), 'dist'), (err) => {
-			RUNSERVER.run ()	
-		})	
+	.description('clean dist directory and build')
+	.action(() => {
+		fsExtra.remove(path.resolve(process.cwd(), 'dist'), (err) => {
+			RUNSERVER.run()
+		})
 	})
 
 // parse the argv by COMMANDER
-COMMANDER.parse (process.argv)
+COMMANDER.parse(process.argv)
 
 // while there is no argument, output the help options
-if (!process.argv [2]) COMMANDER.help ()
+if (!process.argv[2]) COMMANDER.help()

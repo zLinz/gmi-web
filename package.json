@@ -40,6 +40,7 @@
 		"log-update": "^2.3.0",
 		"node-sass": "^4.7.2",
 		"opener": "^1.4.3",
+		"prompt": "^1.0.0",
 		"webpack": "^3.10.0"
 	},
 	"devDependencies": {}
