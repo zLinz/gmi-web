@@ -3,22 +3,11 @@
 <% @@include="/includes/header.html" %>
 
     <body class="index-body">
-        <div class="index-navigator">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="item in banners">
-                        index navigator swiper1
-                    </div>
-                    <div class="swiper-slide" v-for="item in banners">
-                        index navigator swiper2
-                    </div>
-                </div>
-                <!-- 分页pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
+        <div class="main">
+            <img src="@PATH@assets/img/head.png" alt="">
         </div>
         <% @@include="/includes/footer.html" %>
-        <script src="@PATH@js/index.js?version=@VERSION@"></script>
+            <script src="@PATH@js/index.js?version=@VERSION@"></script>
     </body>
 
 </html>
