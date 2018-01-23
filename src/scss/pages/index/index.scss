@@ -1,19 +1,13 @@
 .index-body {
-    background-image: url("../assets/img/bg1.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    .index-navigator {
-        @include rem-fallback(height,
-        17.75);
+    height: 100%;
+    width: 100%;
+    .main {
         width: 100%;
-        position: fixed;
-        bottom: 0;
-        background-color: rgba(255, 165, 0, 0.5);
-        .swiper-container {
-            height: 100%;
-            .swiper-slide {
-                color: $navigator-title-color;
-            }
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        img {
+            margin-top: 50px;
+            margin-left: 50px;
         }
     }
 }
