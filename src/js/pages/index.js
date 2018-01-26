@@ -12,7 +12,7 @@ $(function () {
 
         },
         mounted: function () {
-            new Swiper ('.swiper-container', {
+            new Swiper('.swiper-container', {
                 direction: 'horizontal',
                 loop: true,
                 effect: 'slide',
@@ -37,4 +37,5 @@ $(function () {
         }
     });
 
+    console.log(' ' + kkk);
 })

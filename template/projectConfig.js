@@ -21,7 +21,8 @@ gmiProject.jsDrop_console = false
 gmiProject.jsCollapse_vars = false
 // 提取出出现多次但是没有定义成变量去引用的静态值
 gmiProject.jsReduce_vars = false
-
+// js错误定位设置
+gmiProject.sourceMap = 'eval-source-map'
 
 // project template mode
 gmiProject.normalTemplateUrl = 'http://storage001.gemini-galaxy.com/admin.zip'

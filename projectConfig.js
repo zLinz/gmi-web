@@ -4,7 +4,7 @@ var gmiProject = module.exports = {}
 // Project name used in error log
 gmiProject.project_name = '模板'
 // project port used in local development
-gmiProject.port = '9091'
+gmiProject.port = '9092'
 // project version used in version control
 gmiProject.version = '0.0.1'
 // project root used in local server
@@ -21,6 +21,9 @@ gmiProject.jsDrop_console = false
 gmiProject.jsCollapse_vars = false
 // 提取出出现多次但是没有定义成变量去引用的静态值
 gmiProject.jsReduce_vars = false
+// js错误定位设置
+gmiProject.sourceMap = 'cheap-module-eval-source-map'
+// gmiProject.sourceMap = 'source-map'
 
 
 // project template mode
