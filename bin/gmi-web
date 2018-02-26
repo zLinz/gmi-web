@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 /**
- * Description: Error Handle Util
+ * Description: gmi-web tool
  * Author: Liam
  * CreatedAt: 2017-1107-1048
  * UpdateBy:
@@ -142,6 +142,24 @@ COMMANDER
 		fsExtra.remove(path.resolve(process.cwd(), 'dist'), (err) => {
 			RUNSERVER.run()
 		})
+	})
+
+
+// COMMAND command localhost
+COMMANDER
+	// command template
+	.command('localhost <port>')
+	// command description
+	.description('open localhost with specify port hosts current directory.')
+	.action((port) => {
+		// fsExtra.remove(path.resolve(process.cwd(), 'dist'), (err) => {
+		// 	RUNSERVER.run()
+		// })
+		if (port) {
+			RUNSERVER.localhost(port);
+		} else {
+			GMILOG.E_LOG('please specify port.')
+		}
 	})
 
 // parse the argv by COMMANDER
