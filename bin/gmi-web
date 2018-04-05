@@ -24,25 +24,25 @@ var COMMANDER = require('commander'),
 	fsExtra = require('fs-extra'),
 	path = require('path'),
 	RUNSERVER = require('../lib/bin/serve'),
-	DOWNLOAD = require('../lib/util/gmi-download'),
-	prompt = require('prompt')
+	DOWNLOAD = require('../lib/util/gmi-download')
+// prompt = require('prompt')
 // webpack = require('webpack'),
 // webpackConfig = require('../lib/util/webpack.config.js')
 
-var schema = {
-	properties: {
-		// name: {
-		// 	pattern: /^[a-zA-Z\s\-]+$/,
-		// 	message: 'Name must be only letters, spaces, or dashes',
-		// 	required: true
-		// },
-		password: {
-			hidden: true,
-			replace: '*'
-			// required: true
-		}
-	}
-};
+// var schema = {
+// 	properties: {
+// 		// name: {
+// 		// 	pattern: /^[a-zA-Z\s\-]+$/,
+// 		// 	message: 'Name must be only letters, spaces, or dashes',
+// 		// 	required: true
+// 		// },
+// 		password: {
+// 			hidden: true,
+// 			replace: '*'
+// 			// required: true
+// 		}
+// 	}
+// };
 
 
 // COMMAND options usage
@@ -77,36 +77,17 @@ COMMANDER
 		// GMILOG.N_LOG (options)
 		var mode = options.mode
 
-		// Start the prompt 
-		// 
-		prompt.start();
-
-		// 
-		// Get two properties from the user: email, password 
-		// 
-		prompt.get(schema, function (err, result) {
-			// 
-			// Log the results. 
-			// 
-			// console.log('');
-			if (err) console.log(err)
-			if (result.password == 'gmitemplate') {
-				if (mode == 'normal' || mode == 'admin') {
-					fsExtra.ensureDir(DestPath, err => {
-						if (err) console.log(err)
-						DOWNLOAD.request(projectname, DestPath, mode)
-					})
-				} else {
-					fsExtra.copy(TempPath, DestPath, (err) => {
-						if (err) {
-							console.log(err)
-						} else {
-							console.log("Generate " + projectname + " done!")
-						}
-					})
-				}
-				prompt.stop();
+		if (mode) {
+			// console.log(mode);
+			// console.log('yes');
+			if (mode == 'normal' || mode == 'admin') {
+				fsExtra.ensureDir(DestPath, err => {
+					if (err) console.log(err)
+					DOWNLOAD.request(projectname, DestPath, mode)
+				})
 			} else {
+
+			console.log('Not a correct mode,use default.');
 				fsExtra.copy(TempPath, DestPath, (err) => {
 					if (err) {
 						console.log(err)
@@ -115,10 +96,17 @@ COMMANDER
 					}
 				})
 			}
-			prompt.stop();
-			// console.log('  password: ' + result.password);
-		});
-
+		} else {
+			console.log('no');
+			fsExtra.copy(TempPath, DestPath, (err) => {
+				if (err) {
+					console.log(err)
+				} else {
+					console.log("Generate " + projectname + " done!")
+				}
+			})
+		}
+		// console.log('  password: ' + result.password);
 
 	})
 
