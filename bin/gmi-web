@@ -97,7 +97,7 @@ COMMANDER
 				})
 			}
 		} else {
-			console.log('no');
+			// console.log('no');
 			fsExtra.copy(TempPath, DestPath, (err) => {
 				if (err) {
 					console.log(err)
