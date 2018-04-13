@@ -3,16 +3,21 @@
 
 ## start <project_name>
     ``` gmi-web start <project_name> && cd <project_name>
-        if you don't know the password, just pass throught.
 
 ## install babel-loader package
-    ``` npm install
+    ``` npm install or yarn install
 
 ## run
     ``` gmi-web serve
 
+## page <pagename>
+    ``` gmi-web page pagename  (create relating page's file but need to import to main.scss yourself)
+
 ## build
     ``` gmi-web build
+
+## localhost <port>
+    ``` gmi-web localhost 8080  (open a server bases in current directory)
 
 ## suport
     ``` Mac\Windows\Linux
