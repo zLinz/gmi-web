@@ -24,7 +24,10 @@ var COMMANDER = require('commander'),
 	fsExtra = require('fs-extra'),
 	path = require('path'),
 	RUNSERVER = require('../lib/bin/serve'),
-	DOWNLOAD = require('../lib/util/gmi-download')
+	srcDir = path.resolve(process.cwd(), 'src'),
+	distDir = path.resolve(process.cwd(), 'dist'),
+	DOWNLOAD = require('../lib/util/gmi-download'),
+	GMIPAGE = require('../lib/util/page-template')
 // prompt = require('prompt')
 // webpack = require('webpack'),
 // webpackConfig = require('../lib/util/webpack.config.js')
@@ -87,7 +90,7 @@ COMMANDER
 				})
 			} else {
 
-			console.log('Not a correct mode,use default.');
+				console.log('Not a correct mode,use default.');
 				fsExtra.copy(TempPath, DestPath, (err) => {
 					if (err) {
 						console.log(err)
@@ -148,6 +151,60 @@ COMMANDER
 		} else {
 			GMILOG.E_LOG('please specify port.')
 		}
+	})
+
+
+COMMANDER
+	.command('page <pagename>')
+	.description('create page with specify pagename')
+	.action((pagename) => {
+		// console.log(pagename)
+		// console.log(srcDir)
+		let jsC = GMIPAGE.jsContent(pagename)
+		let scssC = GMIPAGE.scssContent(pagename)
+		let htmlC = GMIPAGE.htmlContent(pagename)
+		jsSrcDir = path.resolve(srcDir + '/js/pages/' + pagename)
+		scssSrcDir = path.resolve(srcDir + '/scss/pages/' + pagename)
+		htmlSrcDir = path.resolve(srcDir + '/pages/' + pagename)
+		console.log(jsSrcDir)
+		fsExtra.ensureDir(jsSrcDir).then(() => {
+			let filename = path.resolve(jsSrcDir + '/' + pagename + '.js')
+			fsExtra.outputFile(filename, jsC, err => {
+				if (err) {
+					GMILOG.E_LOG(err)
+					return
+				}
+				console.log('js success')
+			})
+		}).catch((err) => {
+			GMILOG.E_LOG(err)
+		})
+		console.log(scssSrcDir)
+		fsExtra.ensureDir(scssSrcDir).then(() => {
+			let filename = path.resolve(scssSrcDir + '/' + pagename + '.scss')
+			fsExtra.outputFile(filename, scssC, err => {
+				if (err) {
+					GMILOG.E_LOG(err)
+					return
+				}
+				console.log('scss success')
+			})
+		}).catch((err) => {
+			GMILOG.E_LOG(err)
+		})
+		console.log(htmlSrcDir)
+		fsExtra.ensureDir(htmlSrcDir).then(() => {
+			let filename = path.resolve(htmlSrcDir + '/' + pagename + '.html')
+			fsExtra.outputFile(filename, htmlC, err => {
+				if (err) {
+					GMILOG.E_LOG(err)
+					return
+				}
+				console.log('html success')
+			})
+		}).catch((err) => {
+			GMILOG.E_LOG(err)
+		})
 	})
 
 // parse the argv by COMMANDER
